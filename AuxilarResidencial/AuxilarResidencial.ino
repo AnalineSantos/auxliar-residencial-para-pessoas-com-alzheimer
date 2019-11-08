@@ -7,8 +7,8 @@ uint16_t A;
 int som = 0;
 uint16_t sensor = 0;
 //Monitoramento de portas ou janelas com MC-38a
-int ledVermelho = 13; // porta 13 em output para o LED vermelho
-int ledVerde = 12; // porta 12 em output para o LED verde
+int ledBranco = 13; // porta 13 em output para o LED branco
+int ledAmarelo = 12; // porta 12 em output para o LED amarelo
 int pinoSensor = 7; // porta 7 em input para o sensor
 int val = 0; // variável para ler o status do pino do sensor
  
@@ -34,8 +34,8 @@ digitalWrite(LEDSinal, LOW);
 delay(10);
 }
 //monitoramento portas e janelas
- pinMode(ledVermelho, OUTPUT); // declarando o pino do LED vermelho como output
- pinMode(ledVerde, OUTPUT); // declarando o pino do LED verde como output
+ pinMode(ledBranco, OUTPUT); // declarando o pino do LED branco como output
+ pinMode(ledAmarelo, OUTPUT); // declarando o pino do LED amarelo como output
  pinMode(pinoSensor, INPUT); // declarando o pino do sensor como input
 }
 //alarme vazamento de gás
@@ -60,13 +60,13 @@ delay(50);
  val = digitalRead(pinoSensor); // lendo o estado do sensor e atribuindo a variável val
  if (val == HIGH) {// verifica se a entrada é alta (quando os dois módulos estão separados), e acende o led vermelho e apaga o verde
 
- digitalWrite(ledVermelho, HIGH); // LED verde ON
- digitalWrite(ledVerde, LOW); // LED vermelho OFF
+ digitalWrite(ledBranco, HIGH); // LED branco ON
+ digitalWrite(ledAmarelo, LOW); // LED amarelo OFF
 
 } else { //se não acenderá o led verde e apagará o vermelho
 
- digitalWrite(ledVerde, HIGH); // LED verde ON
- digitalWrite(ledVermelho, LOW); // LED vermelho OFF
+ digitalWrite(ledAmarelo, HIGH); // LED amarelo ON
+ digitalWrite(ledBranco, LOW); // LED branco OFF
 
  }
 }

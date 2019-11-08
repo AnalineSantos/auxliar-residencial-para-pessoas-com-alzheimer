@@ -12,7 +12,7 @@ int ledAmarelo = 12; // porta 12 em output para o LED amarelo
 int pinoSensor = 7; // porta 7 em input para o sensor
 int val = 0; // variável para ler o status do pino do sensor
  
-void setup() {
+void setup() { 
 //alarme vazamento de gás
 pinMode(buzz,OUTPUT);
 pinMode(LEDSinal,OUTPUT);
@@ -24,7 +24,7 @@ digitalWrite(LEDRed,HIGH);
 
 //*delay de 30 segundos até o sensor aquecer.
 //*na fase de testes recomendo diminuir o delay.
-delay(30000);
+delay(300);
 digitalWrite(LEDRed,LOW);
 
 for (A = 0; A <3; A +=1) {
@@ -50,8 +50,8 @@ void loop() {
 //alarme vazamento de gás
 delay(10);
 sensor = analogRead(A0);
-
 som = map(sensor ,10,50, 50,400);
+Serial.print(som);
 tone(buzz,som,(1/(sensor * 10)));
 pisca();
 delay(50);

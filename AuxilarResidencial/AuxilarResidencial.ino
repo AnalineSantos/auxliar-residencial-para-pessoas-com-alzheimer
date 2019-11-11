@@ -13,6 +13,7 @@ int pinoSensor = 7; // porta 7 em input para o sensor
 int val = 0; // variável para ler o status do pino do sensor
  
 void setup() { 
+Serial.begin(9600);
 //alarme vazamento de gás
 pinMode(buzz,OUTPUT);
 pinMode(LEDSinal,OUTPUT);
@@ -50,9 +51,14 @@ void loop() {
 //alarme vazamento de gás
 delay(10);
 sensor = analogRead(A0);
+Serial.print(sensor);
+if (sensor>220) {
 som = map(sensor ,10,50, 50,400);
-Serial.print(som);
 tone(buzz,som,(1/(sensor * 10)));
+}
+else {
+  noTone(buzz);
+}
 pisca();
 delay(50);
 
